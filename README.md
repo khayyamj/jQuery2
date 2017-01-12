@@ -37,7 +37,7 @@ Now that we've made our basic files, we want to get them all hooked together in 
 #Step 2
 ###Time For jQuery
 
-Now that we have our environment set up and our markup written, it's time to use some jQuery. 
+Now that we have our environment set up and our markup written, it's time to use some jQuery.
 
 The first thing we want to do is go into our scripts.js file and create our document ready function:
 
@@ -235,7 +235,7 @@ Finally, let's make it so that we can open and close the new task form with the 
 
 ###Task Progression HTML
 
-Before we make it possible to move our tasks from in progress to archived, we want create a space for them to exist in our HTML. We will do this in a very minimalist way in order to get things in a way they make sense.
+Before we make it possible to move our tasks from "in progress" to "archived", we want to create a space for them to exist in our HTML. We will do this in a very minimalist way in order to get things in a way they make sense.
 
 All we really need to do is create divs with ULs within them that contain the IDs our jQuery will look for. Or in other words, let's make some hooks for our jQuery to find and manipulate!
 
