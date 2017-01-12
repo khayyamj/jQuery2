@@ -26,6 +26,23 @@ $(document).ready(function() {
         );
     }
   }
+                                  // Advance tasks function
+  var advanceTask = function(task) {
+    var modified = task.innerText.trim()
+    for (var i = 0; i < listo.length; i++) {
+      if (listo[i].task === modified) {
+        if (listo[i].id === 'new') {
+          listo[i].id = 'inProgress';
+        } else if (listo[i].id === 'inProgress') {
+          listo[i].id = 'archived';
+        } else {
+          listo.splice(i, 1);
+        }
+        break;
+      }
+    }
+    task.remove();
+  };
 
     $('#newTaskForm').slideToggle('fast', 'linear');
 
@@ -44,5 +61,27 @@ $(document).ready(function() {
           e.preventDefault();
           $('#newTaskForm').fadeToggle('fast', 'linear');
       });
-
+                                  // changing task status to in-prgress
+    $(document).on('click', '#item', function(e) {
+          e.preventDefault();
+          var task = this;
+          advanceTask(task);
+          this.id = 'inProgress';
+          $('#currentList').append(this.outerHTML);
+      });
+                                  // changing tasks to completed
+      $(document).on('click', '#inProgress', function (e) {
+        e.preventDefault();
+        var task = this;
+        task.id = "archived";
+        var changeIcon = task.outerHTML.replace('glyphicon-arrow-right', 'glyphicon-remove');
+        advanceTask(task);
+        $('#archivedList').append(changeIcon);
+      });
+                                  // changing tasks to archived
+      $(document).on('click', '#archived', function (e) {
+        e.preventDefault();
+        var task = this;
+        advanceTask(task);
+      });
 });
